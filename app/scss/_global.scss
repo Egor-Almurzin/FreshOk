@@ -1,1 +1,31 @@
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
 
+.label-new {
+  @extend %os-700;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: $white;
+  border-radius: 6px;
+  background-color: $green-900;
+  padding: 3px 6px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.label-discount {
+  @extend %os-700;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: $white;
+  border-radius: 6px;
+  background-color: $red-900;
+  padding: 3px 6px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
