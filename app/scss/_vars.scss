@@ -12,42 +12,11 @@ $silver-100: #f6f6f6;
 $white: #ffffff;
 $black: #000000;
 
-%os-300 {
-  font-family: "OpenSans-Light", sans-serif;
-  font-weight: 300;
+%font {
+  font-family: "OpenSans", sans-serif;
+
 }
 
-%os-400 {
-  font-family: "OpenSans-Regular", sans-serif;
-  font-weight: 400;
-}
-
-%os-600 {
-  font-family: "OpenSans-SemiBold", sans-serif;
-  font-weight: 600;
-}
-
-%os-700 {
-  font-family: "OpenSans-Bold", sans-serif;
-  font-weight: 700;
-}
-
-%ruda-400 {
+%ruda {
   font-family: "Ruda", sans-serif;
-  font-weight: 400;
-}
-
-%ruda-600 {
-  font-family: "Ruda", sans-serif;
-  font-weight: 600;
-}
-
-%ruda-700 {
-  font-family: "Ruda", sans-serif;
-  font-weight: 700;
-}
-
-%ruda-900 {
-  font-family: "Ruda", sans-serif;
-  font-weight: 900;
 }

@@ -1,24 +1,34 @@
+body {
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $dark-900;
+  background-color: $white;
+}
+
 .container {
   max-width: 1320px;
   padding: 0 15px;
   margin: 0 auto;
 }
 
-.label-new {
-  @extend %os-700;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  color: $white;
-  border-radius: 6px;
-  background-color: $green-900;
-  padding: 3px 6px;
-  text-transform: uppercase;
-  margin-bottom: 7px;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
-.label-discount {
-  @extend %os-700;
+.card--discount {
+  display: block !important;
+  @extend %font;
   font-size: 10px;
   line-height: 1;
   letter-spacing: 0.03em;
@@ -28,4 +38,42 @@
   padding: 3px 6px;
   text-transform: uppercase;
   margin-bottom: 7px;
+}
+
+.card--hit {
+  position: relative;
+  &::after {
+    content: "хит";
+    color: $white;
+    @extend %font;
+    width: 34px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    border-radius: 6px;
+    background-color: #ff7a00;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+}
+
+.card--new {
+  position: relative;
+  &::before {
+    content: "новинка";
+    color: $white;
+    @extend %font;
+    width: 66px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    border-radius: 6px;
+    background-color: $green-900;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
 }

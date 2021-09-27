@@ -1,6 +1,6 @@
 $(function(){
 
-  $('.catalog').on('click', function(){
+  $('.catalog__btn').on('click', function(){
     $('.catalog__list').slideToggle();
   });
 
@@ -8,15 +8,30 @@ $(function(){
     $('.catalog__list').slideUp('catalog');    
   });
 
-  // $('.header').not('.catalog, .catalog__list a').on('click', function(){
-  //   $('.catalog__list').slideUp('catalog');    
-  // });
+  $(document).on('click', function (e){
+		var div = $('.catalog');
+		if (!div.is(e.target)
+		    && div.has(e.target).length === 0) {
+			$('.catalog__list').slideUp();
+		}
+	});
 
-  $('.best-offer').slick({
+  $('.catalog__btn').on('click', function() {
+    $('.catalog__btn').toggleClass('catalog__btn--active');
+  });
+
+
+  $('.best-offer__next').on('click', function() {
+    $('.best-offer__list').slick('slickNext');
+  });
+
+  $('.best-offer__prev').on('click', function() {
+    $('.best-offer__list').slick('slickPrev');
+  });
+
+  $('.best-offer__list').slick({
     arrows: true,
     dots: false,
-    // autoplay: true,
-    // autoplaySpeed: 4000,
   });
 
     var mixer = mixitup('.products');
