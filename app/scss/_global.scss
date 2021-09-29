@@ -5,6 +5,7 @@ body {
   line-height: 1.4;
   color: $dark-900;
   background-color: $white;
+  overflow-x: hidden;
 }
 
 .container {
@@ -75,5 +76,77 @@ body {
     padding: 3px 6px;
     text-transform: uppercase;
     margin-bottom: 7px;
+  }
+}
+
+.title {
+  @extend %ruda;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $dark-900;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.item {
+  margin-right: 24px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.btn {
+  @extend %font;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: relative;
+  outline: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    bottom: -3px;
+    left: 0;
+    background-color: transparent;
+    transition: background-color 0.5s;
+  }
+
+  &:hover::before,
+  &:active::before,
+  &:focus::before {
+    background-color: #b1d387;
+  }
+}
+
+.mini-card__status--hit {
+  position: relative;
+  &::after {
+    content: "хит";
+    color: $white;
+    @extend %font;
+    width: 34px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    border-radius: 6px;
+    background-color: #ff7a00;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    top: -10px;
   }
 }

@@ -29,10 +29,30 @@ $(function(){
     $('.best-offer__list').slick('slickPrev');
   });
 
+  $('.basket-btn').on('click', function() {
+    $('.rightside-menu').removeClass('rightside-menu--close');
+  });
+
+  $('.rightside-menu__close').on('click', function() {
+    $('.rightside-menu').addClass('rightside-menu--close');
+  });
+
   $('.best-offer__list').slick({
-    arrows: true,
+    arrows: false,
     dots: false,
   });
 
-    var mixer = mixitup('.products');
+  var containerEl1 = document.querySelector('[data-ref="mix-1"]');
+  var containerEl2 = document.querySelector('[data-ref="mix-2"]');
+ 
+  var config = {
+    controls: {
+      scope: 'local'
+    }
+  };
+ 
+  var mixer1 = mixitup(containerEl1, config);
+  var mixer2 = mixitup(containerEl2, config);
+
+    // var mixer = mixitup('.products');
 });

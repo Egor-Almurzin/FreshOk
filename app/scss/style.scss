@@ -10,6 +10,7 @@
   font-size: 13px;
   line-height: 1.4;
   color: $white;
+  position: relative;
 
   &__top {
     background-color: $dark-800;
@@ -372,8 +373,16 @@
 .rightside-menu {
   width: 476px;
   max-width: 100%;
-
   padding-top: 19px;
+  position: absolute;
+  z-index: 20;
+  background-color: $white;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  &.rightside-menu--close {
+    transform: translateX(100%);
+  }
 
   &__top {
     display: flex;
@@ -383,14 +392,15 @@
     padding-right: 26px;
   }
 
-  &__top-inner {
+  &__wrapper {
     padding-top: 2px;
     color: $black;
     line-height: 1.2;
     padding-bottom: 12px;
+    font-weight: 400;
   }
 
-  &__top-text {
+  &__title {
     @extend %font;
     font-size: 24px;
     display: block;
@@ -398,7 +408,7 @@
     letter-spacing: 0.1em;
   }
 
-  &__top-link {
+  &__clean {
     @extend %font;
     font-size: 14px;
     display: block;
@@ -412,32 +422,35 @@
     margin-bottom: 14px;
   }
 
-  &__basket {
+  &__list {
     background-color: #f6f6f6;
     padding: 12px;
     min-height: 705px;
-    margin-bottom: 12px;
   }
 
-  &__product {
+  &__item {
     color: $dark-900;
-    padding: 12px;
+    padding: 11px 12px 11px 12px;
     display: flex;
     background-color: #fff;
     align-items: center;
+    border: 1px solid $silver-600;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    height: 84px;
   }
 
   &__img {
     margin-right: 31px;
   }
 
-  &__basket-inner {
+  &__inner {
     margin-right: auto;
     width: 170px;
     max-width: 100%;
   }
 
-  &__basket-product {
+  &__product {
     display: block;
     margin-bottom: 6px;
     @extend %font;
@@ -446,7 +459,7 @@
     letter-spacing: 0.03em;
   }
 
-  &__basket-price {
+  &__price {
     display: block;
     @extend %font;
     font-size: 20px;
@@ -455,8 +468,7 @@
     color: $dark-500;
   }
 
-  &__minus,
-  &__plus {
+  &__btn {
     width: 24px;
     height: 24px;
     background-color: $green-900;
@@ -464,11 +476,11 @@
     align-self: flex-end;
   }
 
-  &__plus {
+  &__btn--plus {
     margin-right: 14px;
   }
 
-  &__minus::before {
+  &__btn--minus::before {
     content: "";
     position: absolute;
     width: 16px;
@@ -480,7 +492,7 @@
     transform: translate(-50%, -50%);
   }
 
-  &__plus::before {
+  &__btn--plus::before {
     content: "";
     position: absolute;
     width: 16px;
@@ -492,7 +504,7 @@
     transform: translate(-50%, -50%);
   }
 
-  &__plus::after {
+  &__btn--plus::after {
     content: "";
     position: absolute;
     width: 2px;
@@ -526,8 +538,50 @@
   }
 
   &__cost span,
-  &__basket-price span {
+  &__price span {
     font-size: 14px;
+  }
+
+  &__wrap {
+    width: 100%;
+    display: flex;
+    @extend %font;
+    font-weight: 400;
+    align-items: center;
+    padding: 24px;
+    justify-content: space-between;
+    background-color: $white;
+    letter-spacing: 0.03em;
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    color: #000000;
+  }
+
+  &__total {
+    @extend %font;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $dark-500;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  &__button {
+    background-color: $green-900;
+    width: 100%;
+    padding: 23px 0;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    color: $white;
   }
 }
 
@@ -657,10 +711,6 @@
   }
 }
 
-.slick-arrow {
-  display: none !important;
-}
-
 .service-info {
   background-color: $silver-100;
 
@@ -724,60 +774,6 @@
 
 .products {
   padding-top: 75px;
-  padding-bottom: 72px;
-
-  &__title {
-    @extend %ruda;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.4;
-    text-align: center;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: $dark-900;
-    margin-bottom: 30px;
-  }
-
-  &__buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-  }
-
-  &__item {
-    margin-right: 24px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  &__button {
-    @extend %font;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 1.4;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    position: relative;
-    outline: transparent;
-
-    &::before {
-      content: "";
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      bottom: -3px;
-      left: 0;
-      background-color: transparent;
-      transition: background-color 0.5s;
-    }
-
-    &:hover::before,
-    &:active::before,
-    &:focus::before {
-      background-color: #b1d387;
-    }
-  }
 
   &__wrapper {
     display: flex;
@@ -962,6 +958,89 @@
   }
 }
 
+.action {
+  padding: 72px 0;
+  &__list {
+    display: grid;
+    grid-template-columns: minmax(300px, 630px) 300px 300px;
+    grid-template-rows: minmax(300px, auto);
+    grid-gap: 30px;
+  }
+  &__item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    // height: 300px;
+    @extend %font;
+    color: $white;
+    text-transform: uppercase;
+    padding: 76px 0 0 34px;
+  }
+
+  &__item:nth-child(n + 2) {
+    color: $dark-500;
+    & .action__text {
+      max-width: 190px;
+    }
+    & .action__link:before {
+      background-color: $dark-500;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 17px;
+  }
+
+  &__text {
+    font-family: Ruda;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 12px;
+    max-width: 400px;
+  }
+
+  &__link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 165px;
+      height: 2px;
+      background-color: $white;
+      left: 0;
+      top: 20px;
+    }
+  }
+}
+
+.event {
+  background-color: #f5f5f5;
+  padding: 72px 0;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+}
+
+.mini-card {
+  &__wrap {
+    padding: 12px;
+    display: flex;
+    background-color: $white;
+  }
+}
 .footer {
   background-color: $dark-800;
   padding: 30px 0 24px;
@@ -1018,7 +1097,7 @@
     border: none;
     max-height: 40px;
     color: $white;
-    transition: background-color .5s, color .5s;
+    transition: background-color 0.5s, color 0.5s;
     &:hover {
       background-color: #4d800c;
     }
