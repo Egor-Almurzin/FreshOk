@@ -29,7 +29,15 @@ $(function(){
     $('.best-offer__list').slick('slickPrev');
   });
 
-  $('.basket-btn').on('click', function() {
+  // $('.basket-btn').on('click', function() {
+  //   $('.rightside-menu').removeClass('rightside-menu--close');
+  // });
+
+  // $('.rightside-menu__close').on('click', function() {
+  //   $('.rightside-menu').addClass('rightside-menu--close');
+  // });
+
+    $('.basket-btn').on('click', function() {
     $('.rightside-menu').removeClass('rightside-menu--close');
   });
 
@@ -54,5 +62,5 @@ $(function(){
   var mixer1 = mixitup(containerEl1, config);
   var mixer2 = mixitup(containerEl2, config);
 
-    // var mixer = mixitup('.products');
+
 });
