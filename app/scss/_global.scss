@@ -1,3 +1,7 @@
+// html {
+//   height: 100%;
+// }
+
 body {
   font-family: "OpenSans", sans-serif;
   font-weight: 400;
@@ -5,7 +9,10 @@ body {
   line-height: 1.4;
   color: $dark-900;
   background-color: $white;
-  // overflow-x: hidden;
+  overflow-x: hidden;
+  // min-height: 100%;
+  // display: grid;
+  // grid-template-rows: 1fr auto;
 }
 
 .container {
@@ -37,19 +44,30 @@ body {
   text-transform: uppercase;
   color: $dark-900;
   margin-bottom: 30px;
+  @include media-4 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
 }
 
 .buttons {
   display: flex;
   justify-content: center;
   margin-bottom: 52px;
+  @include media-4 {
+    margin-bottom: 13px;
+  }
 }
 
 .buttons__item {
   margin-right: 24px;
+  @include media-4 {
+    margin-bottom: 15px;
+  }
   &:last-child {
     margin-right: 0;
   }
+
 }
 
 .buttons__button {
@@ -61,6 +79,9 @@ body {
   text-transform: uppercase;
   position: relative;
   outline: transparent;
+  @include media-4 {
+    font-size: 14px;
+  }
 
   &::before {
     content: "";
@@ -80,50 +101,18 @@ body {
   }
 }
 
-.mini-card__status--hit {
-  position: absolute;
-  &::after {
-    content: "хит";
-    color: $white;
-    @extend %font;
-    width: 34px;
-    height: 16px;
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    border-radius: 6px;
-    background-color: #ff7a00;
-    padding: 3px 6px;
-    text-transform: uppercase;
+.mini-card {
+  &__wrapper {
+    position: absolute;
+    top: 66px;
+    left: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 10;
   }
-}
 
-.mini-card__status--new {
-  position: absolute;
-  &::before {
-    content: "новинка";
-    color: $white;
-    @extend %font;
-    width: 66px;
-    height: 16px;
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    border-radius: 6px;
-    background-color: $green-900;
-    padding: 3px 6px;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-  }
-}
-
-.mini-card__availability--instock {
-  position: absolute;
-  bottom: 19px;
-  left: 0;
-  &::before {
-    content: "в наличии";
-    color: $green-900;
+  &__availability {
     @extend %font;
     font-weight: 600;
     font-size: 10px;
@@ -131,40 +120,21 @@ body {
     letter-spacing: 0.03em;
     background-color: transparent;
     text-transform: uppercase;
-  }
-}
+    display: none;
+    &--instock {
+      color: $green-900;
+    }
 
-.mini-card__availability--finish {
-  position: absolute;
-  bottom: 19px;
-  left: 0;
-  &::before {
-    content: "заканчивается";
-    color: $red-900;
-    @extend %font;
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    background-color: transparent;
-    text-transform: uppercase;
-  }
-}
+    &--finish {
+      color: $red-900;
+    }
 
-.mini-card__availability--over {
-  position: absolute;
-  bottom: 19px;
-  left: 0;
-  &::before {
-    content: "НЕТ В НАЛИЧИИ";
-    color: $silver-600;
-    @extend %font;
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    background-color: transparent;
-    text-transform: uppercase;
+    &--over {
+      color: $silver-600;
+    }
+    &--on {
+      display: block;
+    }
   }
 }
 
@@ -231,5 +201,63 @@ body {
     path {
       fill: #ffb800;
     }
+  }
+}
+
+.counter{
+  &__btn {
+    width: 24px;
+    height: 24px;
+    background-color: $green-900;
+    position: relative;
+    align-self: flex-end;
+  }
+
+  &__btn--minus::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background-color: $white;
+    border-radius: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__btn--plus::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background-color: $white;
+    border-radius: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__btn--plus::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 16px;
+    background-color: $white;
+    border-radius: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__count {
+    padding: 4px 14px;
+    background-color: rgba(99, 166, 14, 0.1);
+    @extend %font;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $dark-500;
+    align-self: flex-end;
+    display: inline-block;
   }
 }
