@@ -12,6 +12,7 @@
   line-height: 1.4;
   color: $white;
   position: relative;
+  z-index: 100;
 
   &__top {
     background-color: $dark-800;
@@ -48,9 +49,11 @@
     @include media-4 {
       display: none;
     }
+
     &:last-child {
       margin-right: 0;
     }
+
     &:hover,
     &:hover {
       opacity: 0.7;
@@ -70,9 +73,11 @@
         top: -3px;
       }
     }
+
     &--adress {
       margin-right: 24px;
       padding-left: 43px;
+
       &::before {
         background-image: url("../images/favicons/truck-icon.svg");
         width: 32px;
@@ -81,6 +86,7 @@
 
     &--hotline {
       padding-left: 34px;
+
       &::before {
         background-image: url("../images/favicons/phone-icon.svg");
         width: 22px;
@@ -113,19 +119,93 @@
 
   &__logo {
     margin-right: 25px;
+    flex: 0 0 200px;
+    @include media-1 {
+      margin-right: 15px;
+    }
+
+    @include media-3 {
+      display: inline-block;
+      margin-right: 25px;
+      flex: 0 0 36px;
+    }
+
+    @include media-4 {
+      display: inline-block;
+      margin-right: auto;
+      flex: 0 0 36px;
+    }
+  }
+
+  &__mobile {
+    display: none;
+    @include media-3 {
+      display: block;
+      margin-right: auto;
+      flex: 0 0 55px;
+    }
   }
 
   &__catalog {
     margin-right: 30px;
   }
 
-  &__form {
-    @include media-3 {
+  &__form-wrapper {
+    flex: 0 1 576px;
+    @include media-2 {
       position: absolute;
       content: "";
-      top: 0;
+      top: 66px;
       left: 0;
       width: 100%;
+    }
+
+    @include media-3 {
+      content: "";
+      top: 91px;
+      left: 0;
+      width: 100%;
+    }
+
+    @include media-4 {
+      top: 38px;
+    }
+  }
+
+  &__input {
+    @include media-1 {
+      padding: 25px 159px 24px 51px;
+    }
+
+    @include media-2 {
+      display: none;
+      position: absolute;
+      top: 74px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 25px 130px 24px 15px;
+      border-radius: 0;
+      border: 1px solid $dark-800;
+    }
+  }
+
+  &__search-form-btn {
+    background-image: url("../images/favicons/search-mobile.svg");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+    display: none;
+
+    @include media-2 {
+      display: block;
+      margin-right: 20px;
+    }
+    @include media-4 {
+      background-size: 24px 24px;
+      margin-right: 0;
     }
   }
 
@@ -148,6 +228,7 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
   &__menu-list {
     display: flex;
   }
@@ -271,20 +352,24 @@
     padding-bottom: 8px;
     font-weight: 600;
     font-size: 18px;
+
     &::before {
       background-image: url("../images/favicons/catalog_icon-black.svg");
       width: 24px;
       height: 19px;
       left: 17px;
     }
+
     &::after {
       display: none;
     }
+
     &:focus {
       background-color: #e0edcf;
       border-radius: 0;
     }
   }
+
   & .catalog__list {
     width: 300px;
     margin-left: 0;
@@ -339,6 +424,7 @@
     color: $dark-800;
     padding-left: 55px;
     margin-bottom: 18px;
+
     &::before {
       position: absolute;
       content: "";
@@ -371,22 +457,6 @@
 }
 
 .logo {
-  @include media-4 {
-    margin-right: auto;
-    width: 44px;
-    height: 44px;
-  }
-  &__mobile {
-    display: none;
-    flex: 0 0 55px;
-    @include media-3 {
-      display: block;
-    }
-    @include media-4 {
-      width: 36px;
-      height: 40px;
-    }
-  }
   &__desktop {
     flex: 0 0 200px;
     @include media-3 {
@@ -419,9 +489,14 @@
     letter-spacing: 0.03em;
     transition: background-color 0.5s;
     width: 100%;
+    @include media-1 {
+      padding: 15px 27px 15px 43px;
+      min-width: 210px;
+    }
     @include media-3 {
       padding: 15px 27px 15px 43px;
     }
+
     &::before {
       content: "";
       position: absolute;
@@ -431,15 +506,12 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      top: 15px;
       left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
 
       @include media-1 {
-        top: 25px;
-      }
-
-      @include media-2 {
-        top: 15px;
+        left: 14px;
       }
     }
 
@@ -452,16 +524,13 @@
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      top: 21px;
       right: 19px;
+      top: 50%;
+      transform: translateY(-50%);
       transition: transform 0.5s;
 
       @include media-1 {
-        top: 31px;
-      }
-
-      @include media-2 {
-        top: 21px;
+        right: 14px;
       }
     }
 
@@ -475,6 +544,7 @@
       background-color: #e0edcf;
       border-radius: 6px 6px 0 0;
     }
+
     &--active {
       &::after {
         transform: rotate(180deg);
@@ -534,25 +604,9 @@
 }
 
 .search-form {
-  position: relative;
   margin-right: auto;
   flex: 0 1 576px;
-
-  @include media-2 {
-    position: absolute;
-    content: "";
-    top: 66px;
-    left: 0;
-    width: 100%;
-  }
-
-  @include media-3 {
-    top: 99px;
-  }
-
-  @include media-4 {
-    top: 38px;
-  }
+  position: relative;
 
   &::after {
     content: "";
@@ -586,6 +640,13 @@
     line-height: 1.4;
     letter-spacing: 0.03em;
     color: #31352b;
+    @include media-1 {
+      padding: 15px 130px 15px 51px;
+    }
+    @include media-4 {
+      padding: 15px 100px 15px 10px;
+      border-radius: 0 6px 6px 0;
+    }
 
     &::placeholder {
       @extend %font;
@@ -593,22 +654,6 @@
       line-height: 1.4;
       letter-spacing: 0.03em;
       color: $dark-800;
-    }
-
-    @include media-1 {
-      padding: 25px 159px 24px 51px;
-    }
-
-    @include media-2 {
-      display: none;
-      position: absolute;
-      top: 74px;
-      left: 0;
-      right: 0;
-      width: 100%;
-      padding: 15px 159px 14px 15px;
-      border-radius: 0;
-      border: 1px solid $dark-800;
     }
   }
 
@@ -645,7 +690,7 @@
     }
 
     @include media-1 {
-      padding: 25px 52px;
+      padding: 15px 30px;
     }
 
     @include media-2 {
@@ -656,25 +701,8 @@
       border-radius: 0;
     }
 
-    @include media-3 {
-    }
-  }
-
-  &__btn {
-    background-image: url("../images/favicons/search-mobile.svg");
-    width: 50px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-size: 35px 35px;
-    background-position: center;
-    display: none;
-    @include media-2 {
-      display: block;
-      margin-right: 20px;
-    }
     @include media-4 {
-      background-size: 24px 24px;
-      margin-right: 0;
+      padding: 15px 15px;
     }
   }
 }
@@ -691,6 +719,7 @@
     position: relative;
     margin-right: 11px;
     border-radius: 3px;
+
     &:nth-child(-n + 2) {
       @include media-4 {
         display: none;
@@ -770,8 +799,6 @@
 }
 
 .rightside-menu {
-  display: none;
-
   width: 476px;
   max-width: 100%;
   padding-top: 19px;
@@ -783,11 +810,15 @@
   right: 0;
   transform: translateX(0);
   transition: transform 0.5s;
-
+  z-index: 101;
   @include media-4 {
     width: 375px;
     max-width: 100%;
     top: 112px;
+  }
+
+  &.rightside-menu--close {
+    display: none;
   }
 
   &--close {
@@ -923,62 +954,6 @@
     }
   }
 
-  // &__btn {
-  //   width: 24px;
-  //   height: 24px;
-  //   background-color: $green-900;
-  //   position: relative;
-  //   align-self: flex-end;
-  // }
-
-  // &__btn--minus::before {
-  //   content: "";
-  //   position: absolute;
-  //   width: 16px;
-  //   height: 2px;
-  //   background-color: $white;
-  //   border-radius: 2px;
-  //   left: 50%;
-  //   top: 50%;
-  //   transform: translate(-50%, -50%);
-  // }
-
-  // &__btn--plus::before {
-  //   content: "";
-  //   position: absolute;
-  //   width: 16px;
-  //   height: 2px;
-  //   background-color: $white;
-  //   border-radius: 2px;
-  //   left: 50%;
-  //   top: 50%;
-  //   transform: translate(-50%, -50%);
-  // }
-
-  // &__btn--plus::after {
-  //   content: "";
-  //   position: absolute;
-  //   width: 2px;
-  //   height: 16px;
-  //   background-color: $white;
-  //   border-radius: 2px;
-  //   left: 50%;
-  //   top: 50%;
-  //   transform: translate(-50%, -50%);
-  // }
-
-  // &__count {
-  //   padding: 4px 14px;
-  //   background-color: rgba(99, 166, 14, 0.1);
-  //   @extend %font;
-  //   font-size: 16px;
-  //   line-height: 1;
-  //   letter-spacing: 0.03em;
-  //   color: $dark-500;
-  //   align-self: flex-end;
-  //   display: inline-block;
-  // }
-
   &__cost {
     @extend %font;
     font-size: 20px;
@@ -1043,6 +1018,7 @@
 
 .best-offer {
   position: relative;
+
   &__body {
     display: flex;
     align-items: center;
@@ -1123,11 +1099,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    @include media-4 {
-      // background-position: center center;
-      // background-size: 100%;
-    }
   }
 
   &__inner {
@@ -1303,7 +1274,8 @@
     padding: 48px 0 29px;
     @include media-4 {
       flex-direction: column;
-      padding: 30px 0;
+      padding: 30px 0 0;
+      align-items: center;
     }
   }
 
@@ -1313,9 +1285,14 @@
     width: 262px;
     max-width: 100%;
     position: relative;
+    @include media-2 {
+      margin-right: 10px;
+      padding-left: 69px;
+    }
     @include media-4 {
       width: 275px;
-      margin-bottom: 31px;
+      margin-bottom: 33px;
+      margin-left: -60px;
     }
 
     &:last-child {
@@ -1366,14 +1343,24 @@
 
 .products {
   padding-top: 75px;
-  @include media-4 {
-    padding-top: 23px;
+  @include media-1 {
+    padding-top: 60px;
   }
+  @include media-2 {
+    padding-top: 55px;
+  }
+  @include media-4 {
+    padding-top: 48px;
+  }
+
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     margin-left: -30px;
     margin-bottom: 18px;
+    @include media-3 {
+      margin-left: -15px;
+    }
     @include media-4 {
       margin-left: -5px;
     }
@@ -1420,6 +1407,11 @@
     margin-left: 30px;
     margin-bottom: 30px;
     width: calc(25% - 30px);
+    @include media-3 {
+      width: calc(50% - 15px);
+      margin-left: 15px;
+      margin-bottom: 15px;
+    }
     @include media-4 {
       width: calc(50% - 5px);
       margin-left: 5px;
@@ -1441,8 +1433,15 @@
     border-radius: 6px;
     transition: border-color 0.5s;
     position: relative;
+
+    @include media-1 {
+      min-height: 350px;
+    }
+    @include media-2 {
+      min-height: 300px;
+    }
     @include media-4 {
-      padding: 53px 12px 12px 12px;
+      padding: 53px 12px 10px 12px;
       min-height: 304px;
       height: 100%;
     }
@@ -1493,6 +1492,9 @@
     margin-bottom: auto;
     flex: 1 0 auto;
     display: inline-block;
+    @include media-4 {
+      margin-bottom: 10px;
+    }
   }
 
   &__buttons {
@@ -1501,7 +1503,7 @@
       display: block;
       margin: 0 auto;
       display: flex;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .counter__btn--minus {
@@ -1547,6 +1549,7 @@
       color: $silver-600;
       position: relative;
       width: 50px;
+
       &::before {
         content: "";
         position: absolute;
@@ -1592,6 +1595,12 @@
 
 .action {
   padding: 72px 0;
+  @include media-1 {
+    padding-top: 60px;
+  }
+  @include media-2 {
+    padding-top: 55px;
+  }
   @include media-4 {
     padding: 48px 0;
   }
@@ -1601,8 +1610,20 @@
     grid-template-columns: minmax(300px, 630px) 300px 300px;
     grid-template-rows: minmax(300px, auto);
     grid-gap: 30px;
+
+    @include media-1 {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 20px;
+    }
+    @include media-3 {
+      grid-template-columns: 1fr;
+      grid-gap: 15px;
+      grid-template-rows: minmax(250px, auto) 200px 200px;
+    }
     @include media-4 {
       grid-template-columns: 1fr;
+      grid-gap: 15px;
+      grid-template-rows: minmax(300px, auto);
     }
   }
 
@@ -1614,6 +1635,13 @@
     color: $white;
     text-transform: uppercase;
     padding: 76px 34px;
+    @include media-2 {
+      padding: 34px;
+    }
+    @include media-4 {
+      border-radius: 6px;
+      padding: 75px 70px 35px 15px;
+    }
   }
 
   &__item:nth-child(n + 2) {
@@ -1621,6 +1649,13 @@
 
     .action__text {
       max-width: 190px;
+
+      @include media-2 {
+        font-size: 24px;
+      }
+      @include media-4 {
+        max-width: 165px;
+      }
     }
 
     .action__link {
@@ -1647,6 +1682,10 @@
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 12px;
     max-width: 400px;
+    @include media-4 {
+      font-size: 24px;
+      margin-bottom: 75px;
+    }
   }
 
   &__link {
@@ -1671,6 +1710,12 @@
 .event {
   background-color: #f5f5f5;
   padding: 72px 0;
+  @include media-1 {
+    padding-top: 60px;
+  }
+  @include media-2 {
+    padding-top: 55px;
+  }
   @include media-4 {
     padding: 48px 0;
   }
@@ -1680,6 +1725,15 @@
     grid-template-columns: minmax(auto, 300px) 1fr 1fr 1fr;
     grid-gap: 28px;
     margin-bottom: 48px;
+    @include media-1 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include media-3 {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+      margin-bottom: 25px;
+    }
     @include media-4 {
       grid-template-columns: 1fr;
       grid-gap: 15px;
@@ -1691,6 +1745,12 @@
     margin-bottom: 32px;
     @include media-4 {
       margin-bottom: 24px;
+    }
+  }
+
+  &__buttons {
+    @include media-4 {
+      margin-bottom: 15px;
     }
   }
 
@@ -1712,6 +1772,7 @@
     margin: 0 auto;
     transition: background-color 0.5s, box-shadow 0.5s, color 0.5s;
     outline: transparent;
+
     &:hover {
       background-color: #4d810c;
       color: $white;
@@ -1732,10 +1793,16 @@
 }
 
 .mini-card {
-
-  @include media-4{
+  @include media-4 {
     padding-left: 22px;
     padding-right: 22px;
+  }
+
+  &__article {
+    @include media-4 {
+      max-width: 500px;
+      width: 100%;
+    }
   }
 
   &__wrap {
@@ -1750,18 +1817,29 @@
     border-radius: 6px;
     transition: border-color 0.5s;
 
+    @include media-1 {
+      min-height: 150px;
+    }
+    @include media-4 {
+      min-height: 123px;
+    }
+
     &:hover {
       border-color: $green-900;
     }
   }
 
-  &__image{
-    @include media-4{
-      margin-right: 14px;
+  &__image {
+    width: 100px;
+    height: 100px;
+    display: block;
+    @include media-4 {
+      margin-right: 19px;
     }
   }
 
   &__img {
+    width: 100% !important;
     width: 100px;
     height: 100px;
     margin-right: 10px;
@@ -1774,8 +1852,9 @@
     width: 164px;
     max-width: 100%;
     position: relative;
-    @include media-4 {
-      width: 199px;
+
+    @include media-3 {
+      width: 62%;
     }
   }
 
@@ -1792,6 +1871,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: -5px;
+    @include media-2 {
+      margin-left: -25px;
+    }
+    @include media-3 {
+      margin-left: 0;
+    }
   }
 
   &__prices {
@@ -1806,6 +1891,7 @@
 
   &__price {
     margin-right: 10px;
+
     & span {
       font-size: 14px;
     }
@@ -1815,6 +1901,7 @@
       width: 50px;
       font-size: 12px;
       margin-right: 0;
+
       &::before {
         content: "";
         position: absolute;
@@ -1842,6 +1929,7 @@
     color: $dark-500;
     padding-right: 18px;
     position: relative;
+
     &::before {
       content: "";
       position: absolute;
@@ -1856,16 +1944,17 @@
 
 .partners {
   padding: 72px 0;
+  @include media-4 {
+    padding: 46px 0;
+  }
 
   &__list {
     opacity: 0.5;
     transition: opacity 0.5s;
+
     &:hover {
       opacity: 1;
     }
-  }
-
-  &__item {
   }
 
   &__wrap {
@@ -1887,6 +1976,9 @@
 
 .news {
   padding-bottom: 72px;
+  @include media-4 {
+    padding-bottom: 46px;
+  }
 
   &__top {
     display: flex;
@@ -1934,12 +2026,14 @@
     grid-gap: 30px;
     @include media-4 {
       grid-template-columns: 1fr;
+      grid-gap: 15px;
     }
   }
 
   &__item {
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
+    padding-bottom: 12px;
   }
 
   &__link:hover {
@@ -2003,13 +2097,22 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
-    padding: 18px;
+    padding: 14px 18px 0 18px;
     min-height: 90px;
     max-width: 382px;
     transition: color 0.5s;
     @include line-clamp;
-    @include media-4 {
+    @include media-2 {
       font-size: 14px;
+    }
+    @include media-3 {
+      min-height: 80px;
+    }
+    @include media-4 {
+      @include line-clamp;
+      padding-top: 12px;
+      padding-bottom: 0;
+      min-height: 35px;
     }
   }
 }
@@ -2018,8 +2121,19 @@
   background-color: $dark-800;
   padding: 30px 0 24px;
   color: $white;
-  // grid-row-start: 2;
-  // grid-row-end: 3;
+  @include media-4 {
+    padding-top: 28px;
+  }
+
+  &__logo {
+    flex: 0 0 200px;
+    @include media-3 {
+      margin: 0 auto;
+      width: 200px;
+      height: 60px;
+      display: block;
+    }
+  }
 
   &__top {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -2028,14 +2142,29 @@
   &__content {
     padding: 30px 0 26px;
     display: flex;
-    // position: relative;
-    @include media-4{
-      flex-direction: column;
+    position: relative;
+    @include media-3 {
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-top: 22px;
+      padding-bottom: 14px;
     }
   }
 
   &__form {
     flex: 0 1 300px;
+    @include media-1 {
+      margin-right: 25px;
+    }
+
+    @include media-3 {
+      padding: 0 19px 0 24px;
+      flex: 0 1 83px;
+    }
+    @include media-4 {
+      padding: 0;
+      margin-right: 0;
+    }
     &::after {
       display: none;
     }
@@ -2066,21 +2195,41 @@
 
   &__input {
     padding: 11px 126px 10px 12px;
+    @include media-1 {
+      padding: 11px 123px 10px 10px;
+    }
+    @include media-4 {
+      border-radius: 6px;
+    }
   }
 
   &__button {
+    display: block;
     background-color: $green-900;
     top: 34px;
     padding: 12px 10px 12px 14px;
     font-size: 12px;
+    border-radius: 0 6px 6px 0;
+    @include media-1 {
+      padding: 12px 10px 12px 10px;
+    }
+
+    @include media-3 {
+      right: 19px;
+    }
+    @include media-3 {
+      right: 0;
+    }
 
     &:hover {
       background-color: #4d800c;
     }
+
     &:active {
       box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
       color: rgba(255, 255, 255, 0.5);
     }
+
     &:focus {
       outline-color: none;
       box-shadow: 0 0 0 4px #b1d387;
@@ -2089,13 +2238,38 @@
     }
   }
 
+  &__menu {
+    @include media-3 {
+      padding-bottom: 36px;
+    }
+    @include media-4 {
+      padding-bottom: 36px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
   &__list {
     column-count: 3;
     margin-right: 37px;
+    @include media-1 {
+      margin-right: 30px;
+    }
+    @include media-4 {
+      margin-right: 0;
+      column-count: 2;
+      column-gap: 30px;
+    }
   }
 
   &__item {
     margin-right: 60px;
+    @include media-1 {
+      margin-right: 10px;
+    }
+    @include media-3 {
+      margin-right: 0;
+    }
   }
 
   &__link {
@@ -2113,6 +2287,16 @@
     font-size: 14px;
     line-height: 1.4;
     display: inline-block;
+    @include media-3 {
+      padding-bottom: 36px;
+    }
+    @include media-4 {
+      padding-bottom: 0;
+    }
+  }
+
+  &__wrap {
+    margin-left: 8px;
   }
 
   &__tel {
@@ -2138,7 +2322,7 @@
 
   &__payment {
     display: flex;
-    @include media-4 {
+    @include media-3 {
       margin-bottom: 24px;
     }
   }
@@ -2152,6 +2336,12 @@
   &__visa {
     margin-right: 24px;
   }
+  &__social {
+    @include media-4 {
+      justify-content: center;
+      margin-bottom: 44px;
+    }
+  }
 }
 
 .social {
@@ -2161,6 +2351,7 @@
   &__item {
     margin-right: 12px;
     transition: opacity 0.5s;
+
     &:active {
       opacity: 0.7;
     }

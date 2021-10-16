@@ -1,6 +1,3 @@
-// html {
-//   height: 100%;
-// }
 
 body {
   font-family: "OpenSans", sans-serif;
@@ -10,9 +7,17 @@ body {
   color: $dark-900;
   background-color: $white;
   overflow-x: hidden;
-  // min-height: 100%;
-  // display: grid;
-  // grid-template-rows: 1fr auto;
+  height: 100vh;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  flex: 1 1 auto;
 }
 
 .container {
@@ -67,7 +72,6 @@ body {
   &:last-child {
     margin-right: 0;
   }
-
 }
 
 .buttons__button {
@@ -204,7 +208,7 @@ body {
   }
 }
 
-.counter{
+.counter {
   &__btn {
     width: 24px;
     height: 24px;
